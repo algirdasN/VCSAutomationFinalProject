@@ -7,7 +7,7 @@ using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    class ChangePassword : _BaseTestWithLogin
+    class ChangePassword : _BaseLogin
     {
         private ChangePasswordPage changePasswordPage;
         private LoginPage loginPage;

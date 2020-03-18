@@ -9,12 +9,12 @@ namespace VCSAutomationFinalProject._Pages
 {
     class LoginPage : _BasePage
     {
-        private IWebElement loginModalButton => driver.FindElement(By.CssSelector(".login-btn"));
-        private IWebElement usernameElement => driver.FindElement(By.Id("loginUser"));
-        private IWebElement passwordElement => driver.FindElement(By.Id("loginPwd"));
-        private IWebElement loginButton => driver.FindElement(By.Id("loginButton"));
-        private IWebElement logoutButton => driver.FindElement(By.Id("registerLink"));
-        private IWebElement userInfoElement => driver.FindElement(By.XPath("//*[@class='icon-user']/..")); 
+        private IWebElement LoginModalButton => driver.FindElement(By.CssSelector(".login-btn"));
+        private IWebElement UsernameElement => driver.FindElement(By.Id("loginUser"));
+        private IWebElement PasswordElement => driver.FindElement(By.Id("loginPwd"));
+        private IWebElement LoginButton => driver.FindElement(By.Id("loginButton"));
+        private IWebElement LogoutButton => driver.FindElement(By.Id("registerLink"));
+        private IWebElement UserInfoElement => driver.FindElement(By.XPath("//*[@class='icon-user']/..")); 
         public LoginPage(IWebDriver driver) : base(driver)
         {
 
@@ -22,42 +22,42 @@ namespace VCSAutomationFinalProject._Pages
 
         public LoginPage ClickLoginModalButton()
         {
-            loginModalButton.Click();
+            LoginModalButton.Click();
             return this;
         }
 
         public LoginPage EnterUsername(string input)
         {
-            usernameElement.SendKeys(input);
+            UsernameElement.SendKeys(input);
             return this;
         }
 
         public LoginPage EnterPassword(string input)
         {
-            passwordElement.SendKeys(input);
+            PasswordElement.SendKeys(input);
             return this;
         }
 
         public LoginPage ClickLoginButton()
         {
-            loginButton.Click();
+            LoginButton.Click();
             return this;
         }
 
         public void AssertSuccessfulLogin(string name)
         {
-            Assert.True(userInfoElement.Text.Contains(name));
+            Assert.True(UserInfoElement.Text.Contains(name));
         }
 
         public LoginPage ClickLogoutButton()
         {
-            logoutButton.Click();
+            LogoutButton.Click();
             return this;
         }
         
         public void AssertSuccesfulLogout()
         {
-            Assert.NotNull(loginModalButton);
+            Assert.NotNull(LoginModalButton);
         }
     }
 }

@@ -8,11 +8,11 @@ namespace VCSAutomationFinalProject._Pages
 {
     class ChangePasswordPage : _BasePage
     {
-        private IWebElement oldPasswordElement => driver.FindElement(By.Id("passwordOld"));
-        private IWebElement newPasswordElement => driver.FindElement(By.Id("passwordNew"));
-        private IWebElement confirmPasswordElement => driver.FindElement(By.Id("passwordNewConfirm"));
-        private IWebElement saveNewPasswordButton => driver.FindElement(By.Id("savePass"));
-        private IWebElement successMessageElement => driver.FindElement(By.CssSelector(".success-message"));
+        private IWebElement OldPasswordElement => driver.FindElement(By.Id("passwordOld"));
+        private IWebElement NewPasswordElement => driver.FindElement(By.Id("passwordNew"));
+        private IWebElement ConfirmPasswordElement => driver.FindElement(By.Id("passwordNewConfirm"));
+        private IWebElement SaveNewPasswordButton => driver.FindElement(By.Id("savePass"));
+        private IWebElement SuccessMessageElement => driver.FindElement(By.CssSelector(".success-message"));
 
         public ChangePasswordPage(IWebDriver driver) : base(driver)
         {
@@ -21,31 +21,31 @@ namespace VCSAutomationFinalProject._Pages
 
         public ChangePasswordPage EnterOldPassword(string input)
         {
-            oldPasswordElement.SendKeys(input);
+            OldPasswordElement.SendKeys(input);
             return this;
         }
 
         public ChangePasswordPage EnterNewPassword(string input)
         {
-            newPasswordElement.SendKeys(input);
+            NewPasswordElement.SendKeys(input);
             return this;
         }
 
         public ChangePasswordPage ConfirmNewPassword(string input)
         {
-            confirmPasswordElement.SendKeys(input);
+            ConfirmPasswordElement.SendKeys(input);
             return this;
         }
 
         public ChangePasswordPage ClickSaveNewPasswordButton()
         {
-            saveNewPasswordButton.Click();
+            SaveNewPasswordButton.Click();
             return this;
         }
 
         public void AssertPasswordChangeSuccess()
         {
-            Assert.AreEqual("Jūsų slaptažodis buvo pakeistas.", successMessageElement.Text);
+            Assert.AreEqual("Jūsų slaptažodis buvo pakeistas.", SuccessMessageElement.Text);
         }
     }
 }

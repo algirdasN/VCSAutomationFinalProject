@@ -10,18 +10,13 @@ using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    class _BaseTestWithLogin
+    class _BaseLogin : _BaseTest
     {
-        public IWebDriver driver;
         private LoginPage loginPage;
-        
+
         [SetUp]
-        public void BaseSetup()
+        public void BaseLogin()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.AddArguments("incognito", "start-maximized");
-            driver = new ChromeDriver(options);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             driver.Url = "https://www.aic.lt";
             AcceptCookies();
             loginPage = new LoginPage(driver);
@@ -34,17 +29,11 @@ namespace VCSAutomationFinalProject
         }
 
         [TearDown]
-        public void BaseTeardown()
+        public void BaseLogout()
         {
             loginPage
                 .ClickLogoutButton()
                 .AssertSuccesfulLogout();
-            driver.Quit();
-        }
-
-        public void AcceptCookies()
-        {
-            driver.FindElement(By.CssSelector(".cc-allow")).Click();
         }
     }
 }

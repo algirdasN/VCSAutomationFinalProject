@@ -24,11 +24,15 @@ namespace VCSAutomationFinalProject
         public void BrandCheckboxTest()
         {
             tacticalBootsPage
-                .SelectCheckBoxRange(2, 5)
-                .AssertCheckBoxRange(2, 5, true);
+                .SelectCheckBoxRange(1, 5)
+                .AssertCheckBoxRange(1, 5, true);
 
             tacticalBootsPage
                 .AssertCheckBoxRange(6, 8, false);
+
+            tacticalBootsPage
+                .SelectCheckBoxRange(1, 3)
+                .AssertCheckBoxRange(1, 3, false);
         }
 
         [Test]

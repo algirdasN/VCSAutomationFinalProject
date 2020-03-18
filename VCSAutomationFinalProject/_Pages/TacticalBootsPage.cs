@@ -13,10 +13,10 @@ namespace VCSAutomationFinalProject._Pages
 {
     class TacticalBootsPage : _BasePage
     {
-        private ReadOnlyCollection<IWebElement> brandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) li"));
-        private ReadOnlyCollection<IWebElement> displayedItemList => driver.FindElements(By.CssSelector(".productData"));
-        private string[] brandList = { "5.11 Tactical", "Bennon", "EXC", "Garmont", "Hi-Tec Magnum", "Mil-Tec", "Zamberlan", "adidas" };
-        private List<string> selectedBrands = new List<string>();
+        private ReadOnlyCollection<IWebElement> BrandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) li"));
+        private ReadOnlyCollection<IWebElement> DisplayedItemList => driver.FindElements(By.CssSelector(".productData"));
+        private readonly string[] brandList = { "5.11 Tactical", "Bennon", "EXC", "Garmont", "Hi-Tec Magnum", "Mil-Tec", "Zamberlan", "adidas" };
+        private readonly List<string> selectedBrands = new List<string>();
 
         public TacticalBootsPage(IWebDriver driver) : base(driver)
         {
@@ -26,7 +26,7 @@ namespace VCSAutomationFinalProject._Pages
         public TacticalBootsPage FilterByBrand(int index)
         {
             var url = driver.Url;
-            brandFilterList[index].FindElement(By.CssSelector("input")).Click();
+            BrandFilterList[index].FindElement(By.CssSelector("input")).Click();
             AddRemoveSelectedBrandList(index);
             WaitForRefresh(url);
             return this;
@@ -35,7 +35,7 @@ namespace VCSAutomationFinalProject._Pages
         public void AssertFilters()
         {
             if (selectedBrands.Count == 0) return;
-            foreach (var item in displayedItemList)
+            foreach (var item in DisplayedItemList)
             {
                 var itemBrand = item.FindElement(By.CssSelector("[itemprop='brand']")).GetAttribute("content");
                 if (!selectedBrands.Contains(itemBrand))
@@ -62,10 +62,10 @@ namespace VCSAutomationFinalProject._Pages
             if (min < 1) { min = 1; }
             for (int i = min - 1; i < max; i++)
             {
-                while (i < brandFilterList.Count)
+                while (i < BrandFilterList.Count)
                 {
                     var url = driver.Url;
-                    brandFilterList[i].FindElement(By.CssSelector("input")).Click();
+                    BrandFilterList[i].FindElement(By.CssSelector("input")).Click();
                     WaitForRefresh(url);
                     break;
                 }
@@ -75,9 +75,14 @@ namespace VCSAutomationFinalProject._Pages
 
         public void AssertCheckBoxRange(int min, int max, bool selected)
         {
+            if (min < 1) { min = 1; }
             for (int i = min - 1; i < max; i++)
             {
-                Assert.AreEqual(selected, brandFilterList[i].FindElement(By.CssSelector("input")).Selected);
+                while (i < BrandFilterList.Count)
+                {
+                    Assert.AreEqual(selected, BrandFilterList[i].FindElement(By.CssSelector("input")).Selected);
+                    break;
+                }
             }
         }
     }
