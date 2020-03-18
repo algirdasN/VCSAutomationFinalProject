@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
@@ -16,17 +17,18 @@ namespace VCSAutomationFinalProject
         {
             driver.Url = "https://www.aic.lt/Avalyne/Taktiniai-batai";
             tacticalBootsPage = new TacticalBootsPage(driver);
+            AcceptCookies();
         }
 
         [Test]
         public void BrandCheckboxTest()
         {
             tacticalBootsPage
-                .SelectCheckBoxRange(1, 4)
-                .AssertCheckBoxRange(1, 4, true);
+                .SelectCheckBoxRange(2, 5)
+                .AssertCheckBoxRange(2, 5, true);
 
             tacticalBootsPage
-                .AssertCheckBoxRange(5, 8, false);
+                .AssertCheckBoxRange(6, 8, false);
         }
 
         [Test]
@@ -43,6 +45,7 @@ namespace VCSAutomationFinalProject
 
             tacticalBootsPage
                 .FilterByBrand(3)
+                .FilterByBrand(7)
                 .AssertFilters();
         }
     }

@@ -23,6 +23,7 @@ namespace VCSAutomationFinalProject
             driver = new ChromeDriver(options);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             driver.Url = "https://www.aic.lt";
+            AcceptCookies();
             loginPage = new LoginPage(driver);
             loginPage
                 .ClickLoginModalButton()
@@ -39,6 +40,11 @@ namespace VCSAutomationFinalProject
                 .ClickLogoutButton()
                 .AssertSuccesfulLogout();
             driver.Quit();
+        }
+
+        public void AcceptCookies()
+        {
+            driver.FindElement(By.CssSelector(".cc-allow")).Click();
         }
     }
 }

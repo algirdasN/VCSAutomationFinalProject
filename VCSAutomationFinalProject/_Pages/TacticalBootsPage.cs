@@ -26,15 +26,7 @@ namespace VCSAutomationFinalProject._Pages
         public TacticalBootsPage FilterByBrand(int index)
         {
             var url = driver.Url;
-            while (true)
-            {
-                try
-                {
-                    brandFilterList[index].FindElement(By.CssSelector("input")).Click();
-                    break;
-                }
-                catch (ElementClickInterceptedException) { }
-            }
+            brandFilterList[index].FindElement(By.CssSelector("input")).Click();
             AddRemoveSelectedBrandList(index);
             WaitForRefresh(url);
             return this;
@@ -65,20 +57,6 @@ namespace VCSAutomationFinalProject._Pages
             }
         }
 
-        public void WaitForRefresh(string url)
-        {
-            var counter = 0;
-            while (driver.Url == url && counter < 40)
-            {
-                Thread.Sleep(250);
-                counter++;
-            }
-            if (counter == 40)
-            {
-                Assert.Fail("Website took more than 10 seconds to refresh");
-            }
-        }
-
         public TacticalBootsPage SelectCheckBoxRange(int min, int max)
         {
             if (min < 1) { min = 1; }
@@ -86,14 +64,10 @@ namespace VCSAutomationFinalProject._Pages
             {
                 while (i < brandFilterList.Count)
                 {
-                    try
-                    {
-                        var url = driver.Url;
-                        brandFilterList[i].FindElement(By.CssSelector("input")).Click();
-                        WaitForRefresh(url);
-                        break;
-                    }
-                    catch (ElementClickInterceptedException) { }
+                    var url = driver.Url;
+                    brandFilterList[i].FindElement(By.CssSelector("input")).Click();
+                    WaitForRefresh(url);
+                    break;
                 }
             }
             return this;

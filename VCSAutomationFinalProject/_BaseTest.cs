@@ -23,5 +23,11 @@ namespace VCSAutomationFinalProject
         {
             driver.Quit();
         }
+
+        public void AcceptCookies()
+        {
+            driver.FindElement(By.CssSelector(".cc-allow")).Click();
+        }
+
     }
 }
