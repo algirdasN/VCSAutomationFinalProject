@@ -13,13 +13,12 @@ namespace VCSAutomationFinalProject
         public void BaseSetup()
         {
             ChromeOptions options = new ChromeOptions();
-            options.AddArgument("incognito");
+            options.AddArguments("incognito", "start-maximized");
             driver = new ChromeDriver(options);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            driver.Manage().Window.Maximize();
         }
 
-        [Test]
+        [TearDown]
         public void BaseTeardown()
         {
             driver.Quit();
