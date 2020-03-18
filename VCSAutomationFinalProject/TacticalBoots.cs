@@ -39,17 +39,17 @@ namespace VCSAutomationFinalProject
         public void FilterByBrandTest()
         {
             tacticalBootsPage
-                .FilterByBrand(0)
-                .FilterByBrand(4)
+                .FilterByBrand(Brand.Tactical511)
+                .FilterByBrand(Brand.HiTecMagnum)
                 .AssertFilters();
 
             tacticalBootsPage
-                .FilterByBrand(0)
+                .FilterByBrand(Brand.Tactical511)
                 .AssertFilters();
 
             tacticalBootsPage
-                .FilterByBrand(3)
-                .FilterByBrand(7)
+                .FilterByBrand(Brand.Garmont)
+                .FilterByBrand(Brand.Zamberlan)
                 .AssertFilters();
         }
     }

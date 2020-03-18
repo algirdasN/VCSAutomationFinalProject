@@ -22,10 +22,10 @@ namespace VCSAutomationFinalProject
             loginPage = new LoginPage(driver);
             loginPage
                 .ClickLoginModalButton()
-                .EnterUsername("nazim.dal@aallaa.org")
-                .EnterPassword("automation")
+                .EnterUsername(User.Default)
+                .EnterPassword(User.Default)
                 .ClickLoginButton()
-                .AssertSuccessfulLogin("Nazim Dal");
+                .AssertSuccessfulLogin(User.Default);
         }
 
         [TearDown]
@@ -33,7 +33,7 @@ namespace VCSAutomationFinalProject
         {
             loginPage
                 .ClickLogoutButton()
-                .AssertSuccesfulLogout();
+                .AssertSuccessfulLogout();
         }
     }
 }

@@ -26,15 +26,15 @@ namespace VCSAutomationFinalProject._Pages
             return this;
         }
 
-        public LoginPage EnterUsername(string input)
+        public LoginPage EnterUsername(User user)
         {
-            UsernameElement.SendKeys(input);
+            UsernameElement.SendKeys(user.Email);
             return this;
         }
 
-        public LoginPage EnterPassword(string input)
+        public LoginPage EnterPassword(User user)
         {
-            PasswordElement.SendKeys(input);
+            PasswordElement.SendKeys(user.Password);
             return this;
         }
 
@@ -44,9 +44,9 @@ namespace VCSAutomationFinalProject._Pages
             return this;
         }
 
-        public void AssertSuccessfulLogin(string name)
+        public void AssertSuccessfulLogin(User user)
         {
-            Assert.True(UserInfoElement.Text.Contains(name));
+            Assert.True(UserInfoElement.Text.Contains(user.Name));
         }
 
         public LoginPage ClickLogoutButton()
@@ -55,7 +55,7 @@ namespace VCSAutomationFinalProject._Pages
             return this;
         }
         
-        public void AssertSuccesfulLogout()
+        public void AssertSuccessfulLogout()
         {
             Assert.NotNull(LoginModalButton);
         }

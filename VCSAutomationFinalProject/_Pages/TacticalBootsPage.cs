@@ -13,9 +13,8 @@ namespace VCSAutomationFinalProject._Pages
 {
     class TacticalBootsPage : _BasePage
     {
-        private ReadOnlyCollection<IWebElement> BrandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) li"));
-        private ReadOnlyCollection<IWebElement> DisplayedItemList => driver.FindElements(By.CssSelector(".productData"));
-        private readonly string[] brandList = { "5.11 Tactical", "Bennon", "EXC", "Garmont", "Hi-Tec Magnum", "Mil-Tec", "Zamberlan", "adidas" };
+        private IList<IWebElement> BrandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) li"));
+        private IList<IWebElement> DisplayedItemList => driver.FindElements(By.CssSelector(".productData"));
         private readonly List<string> selectedBrands = new List<string>();
 
         public TacticalBootsPage(IWebDriver driver) : base(driver)
@@ -23,11 +22,11 @@ namespace VCSAutomationFinalProject._Pages
 
         }
 
-        public TacticalBootsPage FilterByBrand(int index)
+        public TacticalBootsPage FilterByBrand(Brand brand)
         {
             var url = driver.Url;
-            BrandFilterList[index].FindElement(By.CssSelector("input")).Click();
-            AddRemoveSelectedBrandList(index);
+            BrandFilterList[brand.Index].FindElement(By.CssSelector("input")).Click();
+            AddRemoveSelectedBrandList(brand);
             WaitForRefresh(url);
             return this;
         }
@@ -45,15 +44,15 @@ namespace VCSAutomationFinalProject._Pages
             }
         }
 
-        public void AddRemoveSelectedBrandList(int index)
+        public void AddRemoveSelectedBrandList(Brand brand)
         {
-            if (selectedBrands.Contains(brandList[index]))
+            if (selectedBrands.Contains(brand.BrandName))
             {
-                selectedBrands.Remove(brandList[index]);
+                selectedBrands.Remove(brand.BrandName);
             }
             else
             {
-                selectedBrands.Add(brandList[index]);
+                selectedBrands.Add(brand.BrandName);
             }
         }
 

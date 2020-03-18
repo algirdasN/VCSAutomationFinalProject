@@ -20,24 +20,21 @@ namespace VCSAutomationFinalProject
             loginPage = new LoginPage(driver);
         }
 
-        
-
         [Test]
         public void ChangePasswordTest()
         {
-            var standardPassword = "automation";
             var testPassword = "automation3000";
-            ChangePasswordMethod(standardPassword, testPassword);
+            ChangePasswordMethod(User.Default.Password, testPassword);
             loginPage
                 .ClickLogoutButton()
-                .AssertSuccesfulLogout();
+                .AssertSuccessfulLogout();
             loginPage
                 .ClickLoginModalButton()
-                .EnterUsername("nazim.dal@aallaa.org")
-                .EnterPassword(testPassword)
+                .EnterUsername(User.Default)
+                .EnterPassword(User.Default)
                 .ClickLoginButton()
-                .AssertSuccessfulLogin("Nazim Dal");
-            ChangePasswordMethod(testPassword,standardPassword);
+                .AssertSuccessfulLogin(User.Default);
+            ChangePasswordMethod(testPassword, User.Default.Password);
         }
 
         public void ChangePasswordMethod(string oldPassword, string newPassword)
