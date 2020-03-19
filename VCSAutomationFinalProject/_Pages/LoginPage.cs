@@ -38,6 +38,12 @@ namespace VCSAutomationFinalProject._Pages
             return this;
         }
 
+        public LoginPage EnterPasswordString(string password)
+        {
+            PasswordElement.SendKeys(password);
+            return this;
+        }
+
         public LoginPage ClickLoginButton()
         {
             LoginButton.Click();

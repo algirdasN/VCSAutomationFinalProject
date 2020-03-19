@@ -31,7 +31,7 @@ namespace VCSAutomationFinalProject
             loginPage
                 .ClickLoginModalButton()
                 .EnterUsername(User.Default)
-                .EnterPassword(User.Default)
+                .EnterPasswordString(testPassword)
                 .ClickLoginButton()
                 .AssertSuccessfulLogin(User.Default);
             ChangePasswordMethod(testPassword, User.Default.Password);
