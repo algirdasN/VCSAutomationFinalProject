@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
@@ -16,8 +14,8 @@ namespace VCSAutomationFinalProject
         public void Setup()
         {
             driver.Url = "https://www.aic.lt/Avalyne/Taktiniai-batai";
-            tacticalBootsPage = new TacticalBootsPage(driver);
             AcceptCookies();
+            tacticalBootsPage = new TacticalBootsPage(driver);
         }
 
         [Test]

@@ -1,13 +1,16 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 namespace VCSAutomationFinalProject
 {
-    public class _BaseTest
+    abstract class _BaseTest
     {
-        public IWebDriver driver;
+        protected IWebDriver driver;
 
         [SetUp]
         public void BaseSetup()
@@ -15,6 +18,12 @@ namespace VCSAutomationFinalProject
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("incognito", "start-maximized");
             driver = new ChromeDriver(options);
+
+            //FirefoxOptions options = new FirefoxOptions();
+            //options.AddArguments("-private");
+            //driver = new FirefoxDriver(options);
+            //driver.Manage().Window.Maximize();
+
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 

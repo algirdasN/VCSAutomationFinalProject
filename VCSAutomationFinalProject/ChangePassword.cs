@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading;
 using NUnit.Framework;
 using VCSAutomationFinalProject._Pages;
 
@@ -10,14 +9,14 @@ namespace VCSAutomationFinalProject
     class ChangePassword : _BaseLogin
     {
         private ChangePasswordPage changePasswordPage;
-        private LoginPage loginPage;
+        private LandingPage landingPage;
 
         [SetUp]
         public void Setup()
         {
             driver.Url = "https://www.aic.lt/nustatymai/";
             changePasswordPage = new ChangePasswordPage(driver);
-            loginPage = new LoginPage(driver);
+            landingPage = new LandingPage(driver);
         }
 
         [Test]
@@ -25,10 +24,10 @@ namespace VCSAutomationFinalProject
         {
             var testPassword = "automation3000";
             ChangePasswordMethod(User.Default.Password, testPassword);
-            loginPage
+            landingPage
                 .ClickLogoutButton()
                 .AssertSuccessfulLogout();
-            loginPage
+            landingPage
                 .ClickLoginModalButton()
                 .EnterUsername(User.Default)
                 .EnterPasswordString(testPassword)
