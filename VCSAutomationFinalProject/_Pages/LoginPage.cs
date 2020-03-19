@@ -14,7 +14,8 @@ namespace VCSAutomationFinalProject._Pages
         private IWebElement PasswordElement => driver.FindElement(By.Id("loginPwd"));
         private IWebElement LoginButton => driver.FindElement(By.Id("loginButton"));
         private IWebElement LogoutButton => driver.FindElement(By.Id("registerLink"));
-        private IWebElement UserInfoElement => driver.FindElement(By.XPath("//*[@class='icon-user']/..")); 
+        private IWebElement UserInfoElement => driver.FindElement(By.XPath("//*[@class='icon-user']/.."));
+
         public LoginPage(IWebDriver driver) : base(driver)
         {
 

@@ -52,5 +52,33 @@ namespace VCSAutomationFinalProject
                 .FilterByBrand(Brand.Zamberlan)
                 .AssertFilters();
         }
+
+        [Test]
+        public void SortAlphabeticallyTest()
+        {
+            tacticalBootsPage
+                .ClickSortDropdownElement()
+                .SelectSortAlphabeticalZAElement()
+                .AssertSortAlphabeticalZA();
+
+            tacticalBootsPage
+                .ClickSortDropdownElement()
+                .SelectSortAlphabeticalAZElement()
+                .AssertSortAlphabeticalAZ();
+        }
+
+        [Test]
+        public void SortByPriceTest()
+        {
+            tacticalBootsPage
+                .ClickSortDropdownElement()
+                .SelectSortByPriceDescElement()
+                .AssertSortByPriceDesc();
+
+            tacticalBootsPage
+                .ClickSortDropdownElement()
+                .SelectSortByPriceAscElement()
+                .AssertSortByPriceAsc();
+        }
     }
 }
