@@ -25,6 +25,8 @@ namespace VCSAutomationFinalProject
             driver = Driver.InitiateDriver(Driver.Browser.Chrome);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+            InitiatePages();
         }
 
         [TearDown]
