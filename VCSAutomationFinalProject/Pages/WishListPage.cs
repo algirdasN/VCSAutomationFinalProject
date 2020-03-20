@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace VCSAutomationFinalProject._Pages
+namespace VCSAutomationFinalProject.Pages
 {
     class WishListPage : BasePage
     {

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using VCSAutomationFinalProject._Pages;
+﻿using NUnit.Framework;
 
-namespace VCSAutomationFinalProject
+namespace VCSAutomationFinalProject.Tests
 {
     class WishList : BaseTestWithLogin
     {

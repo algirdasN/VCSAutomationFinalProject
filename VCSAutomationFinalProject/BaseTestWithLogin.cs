@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using VCSAutomationFinalProject._Pages;
+using VCSAutomationFinalProject.Databases;
+using VCSAutomationFinalProject.Pages;
 
 namespace VCSAutomationFinalProject
 {

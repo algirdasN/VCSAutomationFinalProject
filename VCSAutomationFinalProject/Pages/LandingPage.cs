@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using VCSAutomationFinalProject.Databases;
 
-namespace VCSAutomationFinalProject._Pages
+namespace VCSAutomationFinalProject.Pages
 {
     class LandingPage : BasePage
     {

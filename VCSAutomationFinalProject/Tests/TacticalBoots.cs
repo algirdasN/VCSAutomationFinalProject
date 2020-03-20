@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
-using VCSAutomationFinalProject._Pages;
+﻿using NUnit.Framework;
+using VCSAutomationFinalProject.Databases;
 
-namespace VCSAutomationFinalProject
+namespace VCSAutomationFinalProject.Tests
 {
     class TacticalBoots : BaseTest
     {

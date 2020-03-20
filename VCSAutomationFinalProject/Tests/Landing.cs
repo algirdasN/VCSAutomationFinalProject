@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
-using VCSAutomationFinalProject._Pages;
+﻿using NUnit.Framework;
 
-namespace VCSAutomationFinalProject
+namespace VCSAutomationFinalProject.Tests
 {
     class Landing : BaseTest
     {
