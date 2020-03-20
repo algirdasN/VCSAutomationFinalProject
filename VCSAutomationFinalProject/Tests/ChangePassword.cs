@@ -6,7 +6,7 @@ using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    class ChangePassword : _BaseLogin
+    class ChangePassword : BaseLogin
     {
         private ChangePasswordPage changePasswordPage;
         private LandingPage landingPage;

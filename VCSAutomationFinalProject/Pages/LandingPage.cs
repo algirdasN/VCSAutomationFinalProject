@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 
 namespace VCSAutomationFinalProject._Pages
 {
-    class LandingPage : _BasePage
+    class LandingPage : BasePage
     {
         private IWebElement LoginModalButton => driver.FindElement(By.CssSelector(".login-btn"));
         private IWebElement UsernameElement => driver.FindElement(By.Id("loginUser"));
@@ -56,7 +56,7 @@ namespace VCSAutomationFinalProject._Pages
         public void AssertSuccessfulLogin(User user)
         {
             Assert.True(UserInfoElement.Text.Contains(user.Name));
-            _BaseLogin.CurrentUser = user;
+            BaseLogin.CurrentUser = user;
         }
 
         public LandingPage ClickLogoutButton()

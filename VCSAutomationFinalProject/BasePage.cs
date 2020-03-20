@@ -7,11 +7,11 @@ using OpenQA.Selenium;
 
 namespace VCSAutomationFinalProject._Pages
 {
-    abstract class _BasePage
+    abstract class BasePage
     {
         protected IWebDriver driver;
 
-        protected _BasePage(IWebDriver driver)
+        protected BasePage(IWebDriver driver)
         {
             this.driver = driver;
         }

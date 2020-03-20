@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 
 namespace VCSAutomationFinalProject._Pages
 {
-    class ItemInfoPage : _BasePage
+    class ItemInfoPage : BasePage
     {
         private IWebElement AddToWishListElement => driver.FindElement(By.Id("linkToNoticeList"));
         private IWebElement GoBackToTacticalBootsPageElement => driver.FindElement(By.CssSelector("[title='Taktiniai batai']"));
@@ -18,7 +18,7 @@ namespace VCSAutomationFinalProject._Pages
         public ItemInfoPage AddItemToWishList()
         {
             var itemId = driver.FindElement(By.CssSelector("#detailsMain [name='anid']")).GetAttribute("value");
-            var currentUserWishList = _BaseLogin.CurrentUser.SelectedWishListItemIdlList;
+            var currentUserWishList = BaseLogin.CurrentUser.SelectedWishListItemIdlList;
             if (!currentUserWishList.Contains(itemId))
             {
                 currentUserWishList.Add(itemId);

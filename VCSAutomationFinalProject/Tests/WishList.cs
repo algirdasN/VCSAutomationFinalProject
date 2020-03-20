@@ -7,7 +7,7 @@ using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    class WishList : _BaseLogin
+    class WishList : BaseLogin
     {
         private TacticalBootsPage tacticalBootsPage;
         private WishListPage wishListPage;

@@ -6,13 +6,13 @@ using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    class _BaseLogin : _BaseTest
+    class BaseLogin : BaseTest
     {
         public static User CurrentUser;
         private LandingPage landingPage;
 
         [SetUp]
-        public void BaseLogin()
+        public void Login()
         {
             driver.Url = "https://www.aic.lt";
             AcceptCookies();
@@ -26,7 +26,7 @@ namespace VCSAutomationFinalProject
         }
 
         [TearDown]
-        public void BaseLogout()
+        public void Logout()
         {
             landingPage
                 .ClickLogoutButton()

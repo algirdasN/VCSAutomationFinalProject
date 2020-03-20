@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 
 namespace VCSAutomationFinalProject._Pages
 {
-    class WishListPage : _BasePage
+    class WishListPage : BasePage
     {
         private IWebElement RemoveItemFromWishListButton => driver.FindElement(By.CssSelector(".removeButton"));
         private IList<IWebElement> DisplayedWishListItemList => driver.FindElements(By.CssSelector(".productData"));
@@ -19,7 +19,7 @@ namespace VCSAutomationFinalProject._Pages
 
         public void AssertWishList()
         {
-            var currentUserWishList = _BaseLogin.CurrentUser.SelectedWishListItemIdlList;
+            var currentUserWishList = BaseLogin.CurrentUser.SelectedWishListItemIdlList;
             Assert.AreEqual(currentUserWishList.Count, DisplayedWishListItemList.Count);
             foreach (var item in DisplayedWishListItemList)
             {

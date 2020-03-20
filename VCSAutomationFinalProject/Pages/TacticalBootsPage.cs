@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 
 namespace VCSAutomationFinalProject._Pages
 {
-    class TacticalBootsPage : _BasePage
+    class TacticalBootsPage : BasePage
     {
         private IList<IWebElement> BrandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) li"));
         private IList<IWebElement> DisplayedItemList => driver.FindElements(By.CssSelector(".productData"));
@@ -129,7 +129,7 @@ namespace VCSAutomationFinalProject._Pages
             }
         }
 
-        public TacticalBootsPage FilterByBrand(Brand brand)
+        public TacticalBootsPage FilterByBrand(TacticalBootsBrand brand)
         {
             var url = driver.Url;
             BrandFilterList[brand.Index].FindElement(By.CssSelector("input")).Click();
@@ -151,7 +151,7 @@ namespace VCSAutomationFinalProject._Pages
             }
         }
 
-        public void AddRemoveSelectedBrandList(Brand brand)
+        public void AddRemoveSelectedBrandList(TacticalBootsBrand brand)
         {
             if (selectedBrands.Contains(brand.BrandName))
             {

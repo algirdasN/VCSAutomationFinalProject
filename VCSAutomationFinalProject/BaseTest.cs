@@ -8,7 +8,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace VCSAutomationFinalProject
 {
-    abstract class _BaseTest
+    abstract class BaseTest
     {
         protected IWebDriver driver;
 

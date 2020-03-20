@@ -6,7 +6,7 @@ using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    class Landing : _BaseTest
+    class Landing : BaseTest
     {
         private LandingPage landingPage;
 
@@ -33,6 +33,5 @@ namespace VCSAutomationFinalProject
                 .ClickFeaturedButton(0)
                 .AssertFeaturedSlide(0);
         }
-
     }
 }

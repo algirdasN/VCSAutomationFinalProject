@@ -6,7 +6,7 @@ using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    class TacticalBoots : _BaseTest
+    class TacticalBoots : BaseTest
     {
         private TacticalBootsPage tacticalBootsPage;
 
@@ -37,17 +37,17 @@ namespace VCSAutomationFinalProject
         public void FilterByBrandTest()
         {
             tacticalBootsPage
-                .FilterByBrand(Brand.Tactical511)
-                .FilterByBrand(Brand.HiTecMagnum)
+                .FilterByBrand(TacticalBootsBrand.Tactical511)
+                .FilterByBrand(TacticalBootsBrand.HiTecMagnum)
                 .AssertFilters();
 
             tacticalBootsPage
-                .FilterByBrand(Brand.Tactical511)
+                .FilterByBrand(TacticalBootsBrand.Tactical511)
                 .AssertFilters();
 
             tacticalBootsPage
-                .FilterByBrand(Brand.Garmont)
-                .FilterByBrand(Brand.Zamberlan)
+                .FilterByBrand(TacticalBootsBrand.Garmont)
+                .FilterByBrand(TacticalBootsBrand.Zamberlan)
                 .AssertFilters();
         }
 

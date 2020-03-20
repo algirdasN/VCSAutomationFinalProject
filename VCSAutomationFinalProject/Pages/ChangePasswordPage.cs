@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 
 namespace VCSAutomationFinalProject._Pages
 {
-    class ChangePasswordPage : _BasePage
+    class ChangePasswordPage : BasePage
     {
         private IWebElement OldPasswordElement => driver.FindElement(By.Id("passwordOld"));
         private IWebElement NewPasswordElement => driver.FindElement(By.Id("passwordNew"));
