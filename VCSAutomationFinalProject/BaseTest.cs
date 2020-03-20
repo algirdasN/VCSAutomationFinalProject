@@ -5,6 +5,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
@@ -12,17 +13,16 @@ namespace VCSAutomationFinalProject
     {
         protected IWebDriver driver;
 
+        protected ChangePasswordPage changePasswordPage;
+        protected ItemInfoPage itemInfoPage;
+        protected LandingPage landingPage;
+        protected TacticalBootsPage tacticalBootsPage;
+        protected WishListPage wishListPage;
+
         [SetUp]
         public void BaseSetup()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.AddArguments("incognito", "start-maximized");
-            driver = new ChromeDriver(options);
-
-            //FirefoxOptions options = new FirefoxOptions();
-            //options.AddArguments("-private");
-            //driver = new FirefoxDriver(options);
-            //driver.Manage().Window.Maximize();
+            driver = Driver.InitiateDriver(Driver.Browser.Chrome);
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
@@ -38,5 +38,13 @@ namespace VCSAutomationFinalProject
             driver.FindElement(By.CssSelector(".cc-allow")).Click();
         }
 
+        public void InitiatePages()
+        {
+            changePasswordPage = new ChangePasswordPage(driver);
+            itemInfoPage = new ItemInfoPage(driver);
+            landingPage = new LandingPage(driver);
+            tacticalBootsPage = new TacticalBootsPage(driver);
+            wishListPage = new WishListPage(driver);
+        }
     }
 }

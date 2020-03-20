@@ -9,14 +9,13 @@ namespace VCSAutomationFinalProject
     class BaseLogin : BaseTest
     {
         public static User CurrentUser;
-        private LandingPage landingPage;
 
         [SetUp]
         public void Login()
         {
             driver.Url = "https://www.aic.lt";
             AcceptCookies();
-            landingPage = new LandingPage(driver);
+           
             landingPage
                 .ClickLoginModalButton()
                 .EnterUsername(User.Default)

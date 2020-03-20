@@ -8,17 +8,6 @@ namespace VCSAutomationFinalProject
 {
     class ChangePassword : BaseLogin
     {
-        private ChangePasswordPage changePasswordPage;
-        private LandingPage landingPage;
-
-        [SetUp]
-        public void Setup()
-        {
-            driver.Url = "https://www.aic.lt/nustatymai/";
-            changePasswordPage = new ChangePasswordPage(driver);
-            landingPage = new LandingPage(driver);
-        }
-
         [Test]
         public void ChangePasswordTest()
         {
@@ -39,6 +28,7 @@ namespace VCSAutomationFinalProject
         public void ChangePasswordMethod(string oldPassword, string newPassword)
         {
             changePasswordPage
+                .GoToChangePasswordPage()
                 .EnterOldPassword(oldPassword)
                 .EnterNewPassword(newPassword)
                 .ConfirmNewPassword(newPassword)

@@ -9,16 +9,6 @@ namespace VCSAutomationFinalProject
 {
     class WishList : BaseLogin
     {
-        private TacticalBootsPage tacticalBootsPage;
-        private WishListPage wishListPage;
-
-        [SetUp]
-        public void Setup()
-        {
-            tacticalBootsPage = new TacticalBootsPage(driver);
-            wishListPage = new WishListPage(driver);
-        }
-
         [TearDown]
         public void Teardown()
         {

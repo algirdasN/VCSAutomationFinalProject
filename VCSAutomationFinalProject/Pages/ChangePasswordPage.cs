@@ -19,6 +19,12 @@ namespace VCSAutomationFinalProject._Pages
 
         }
 
+        public ChangePasswordPage GoToChangePasswordPage()
+        {
+            driver.Url = "https://www.aic.lt/nustatymai/";
+            return this;
+        }
+
         public ChangePasswordPage EnterOldPassword(string input)
         {
             OldPasswordElement.SendKeys(input);

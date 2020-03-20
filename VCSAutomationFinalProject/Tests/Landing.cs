@@ -8,14 +8,11 @@ namespace VCSAutomationFinalProject
 {
     class Landing : BaseTest
     {
-        private LandingPage landingPage;
-
         [SetUp]
         public void Setup()
         {
             driver.Url = "https://www.aic.lt";
             AcceptCookies();
-            landingPage = new LandingPage(driver);
         }
 
         [Test]

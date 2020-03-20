@@ -8,14 +8,11 @@ namespace VCSAutomationFinalProject
 {
     class TacticalBoots : BaseTest
     {
-        private TacticalBootsPage tacticalBootsPage;
-
         [SetUp]
         public void Setup()
         {
             driver.Url = "https://www.aic.lt/Avalyne/Taktiniai-batai";
             AcceptCookies();
-            tacticalBootsPage = new TacticalBootsPage(driver);
         }
 
         [Test]
