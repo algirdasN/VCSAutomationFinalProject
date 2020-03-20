@@ -7,7 +7,7 @@ using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    class WishList : BaseLogin
+    class WishList : BaseTestWithLogin
     {
         [TearDown]
         public void Teardown()

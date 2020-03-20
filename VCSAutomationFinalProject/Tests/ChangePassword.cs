@@ -6,22 +6,25 @@ using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    class ChangePassword : BaseLogin
+    class ChangePassword : BaseTestWithLogin
     {
         [Test]
         public void ChangePasswordTest()
         {
             var testPassword = "automation3000";
             ChangePasswordMethod(User.Default.Password, testPassword);
+            
             landingPage
                 .ClickLogoutButton()
                 .AssertSuccessfulLogout();
+            
             landingPage
                 .ClickLoginModalButton()
                 .EnterUsername(User.Default)
                 .EnterPasswordString(testPassword)
                 .ClickLoginButton()
                 .AssertSuccessfulLogin(User.Default);
+            
             ChangePasswordMethod(testPassword, User.Default.Password);
         }
 

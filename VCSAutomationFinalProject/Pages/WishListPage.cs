@@ -19,7 +19,7 @@ namespace VCSAutomationFinalProject._Pages
 
         public void AssertWishList()
         {
-            var currentUserWishList = BaseLogin.CurrentUser.SelectedWishListItemIdlList;
+            var currentUserWishList = BaseTestWithLogin.CurrentUser.SelectedWishListItemIdlList;
             Assert.AreEqual(currentUserWishList.Count, DisplayedWishListItemList.Count);
             foreach (var item in DisplayedWishListItemList)
             {

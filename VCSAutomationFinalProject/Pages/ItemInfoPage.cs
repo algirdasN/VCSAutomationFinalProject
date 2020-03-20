@@ -18,7 +18,7 @@ namespace VCSAutomationFinalProject._Pages
         public ItemInfoPage AddItemToWishList()
         {
             var itemId = driver.FindElement(By.CssSelector("#detailsMain [name='anid']")).GetAttribute("value");
-            var currentUserWishList = BaseLogin.CurrentUser.SelectedWishListItemIdlList;
+            var currentUserWishList = BaseTestWithLogin.CurrentUser.SelectedWishListItemIdlList;
             if (!currentUserWishList.Contains(itemId))
             {
                 currentUserWishList.Add(itemId);

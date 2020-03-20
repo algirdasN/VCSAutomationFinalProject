@@ -56,7 +56,7 @@ namespace VCSAutomationFinalProject._Pages
         public void AssertSuccessfulLogin(User user)
         {
             Assert.True(UserInfoElement.Text.Contains(user.Name));
-            BaseLogin.CurrentUser = user;
+            BaseTestWithLogin.CurrentUser = user;
         }
 
         public LandingPage ClickLogoutButton()

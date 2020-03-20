@@ -1,15 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
 using VCSAutomationFinalProject._Pages;
 
 namespace VCSAutomationFinalProject
 {
-    abstract class BaseTest
+    class BaseTestWithLogin
     {
         protected IWebDriver driver;
 
@@ -19,17 +17,33 @@ namespace VCSAutomationFinalProject
         protected TacticalBootsPage tacticalBootsPage;
         protected WishListPage wishListPage;
 
+        public static User CurrentUser;
+
         [SetUp]
-        public void BaseSetup()
+        public void BaseLogin()
         {
             driver = Driver.InitiateDriver(Driver.Browser.Chrome);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             InitiatePages();
+
+            driver.Url = "https://www.aic.lt";
+            AcceptCookies();
+           
+            landingPage
+                .ClickLoginModalButton()
+                .EnterUsername(User.Default)
+                .EnterPassword(User.Default)
+                .ClickLoginButton()
+                .AssertSuccessfulLogin(User.Default);
         }
 
         [TearDown]
-        public void BaseTeardown()
+        public void BaseLogout()
         {
+            landingPage
+                .ClickLogoutButton()
+                .AssertSuccessfulLogout();
+
             driver.Quit();
         }
 
