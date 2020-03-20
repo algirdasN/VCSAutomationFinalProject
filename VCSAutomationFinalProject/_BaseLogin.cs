@@ -8,6 +8,7 @@ namespace VCSAutomationFinalProject
 {
     class _BaseLogin : _BaseTest
     {
+        public static User CurrentUser;
         private LandingPage landingPage;
 
         [SetUp]

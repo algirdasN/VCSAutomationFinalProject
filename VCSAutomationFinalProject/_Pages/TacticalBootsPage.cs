@@ -15,6 +15,7 @@ namespace VCSAutomationFinalProject._Pages
         private IWebElement SortAlphabeticalAZElement => driver.FindElement(By.CssSelector(".dropdown-content li:nth-child(2)"));
         private IWebElement SortByPriceDescElement => driver.FindElement(By.CssSelector(".dropdown-content li:nth-child(3)"));
         private IWebElement SortByPriceAscElement => driver.FindElement(By.CssSelector(".dropdown-content li:nth-child(4)"));
+        private IList<IWebElement> GoToItemInfoPageButtonList => driver.FindElements(By.CssSelector("a.btn-grey"));
 
         private readonly List<string> selectedBrands = new List<string>();
 
@@ -26,6 +27,12 @@ namespace VCSAutomationFinalProject._Pages
         public TacticalBootsPage ClickSortDropdownElement()
         {
             SortDropDownElement.Click();
+            return this;
+        }
+
+        public TacticalBootsPage GoToTacticalBootsPage()
+        {
+            driver.Url = "https://www.aic.lt/Avalyne/Taktiniai-batai";
             return this;
         }
 
@@ -183,6 +190,12 @@ namespace VCSAutomationFinalProject._Pages
                     break;
                 }
             }
+        }
+
+        public ItemInfoPage GoToItemInfoPageByIndex(int index)
+        {
+            GoToItemInfoPageButtonList[index].Click();
+            return new ItemInfoPage(driver);
         }
     }
 }

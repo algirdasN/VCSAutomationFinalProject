@@ -11,12 +11,14 @@ namespace VCSAutomationFinalProject
         public string Name;
         public string Email;
         public string Password;
+        public List<string> SelectedWishListItemIdlList;
 
         public User(string name, string email, string password)
         {
             Name = name;
             Email = email;
             Password = password;
+            SelectedWishListItemIdlList = new List<string>();
         }
     }
 }
