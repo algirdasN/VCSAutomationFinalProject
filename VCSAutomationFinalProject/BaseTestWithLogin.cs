@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using VCSAutomationFinalProject.Databases;
 using VCSAutomationFinalProject.Pages;
@@ -46,6 +45,8 @@ namespace VCSAutomationFinalProject
                 .ClickLogoutButton()
                 .AssertSuccessfulLogout();
 
+            PrintScreen.DoScreenshotOnFailedTests(driver);
+            
             driver.Quit();
         }
 

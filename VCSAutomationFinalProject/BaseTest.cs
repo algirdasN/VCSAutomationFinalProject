@@ -1,4 +1,3 @@
-using System;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using VCSAutomationFinalProject.Pages;
@@ -32,6 +31,8 @@ namespace VCSAutomationFinalProject
         [TearDown]
         public void BaseTeardown()
         {
+            PrintScreen.DoScreenshotOnFailedTests(driver);
+
             driver.Quit();
         }
 
