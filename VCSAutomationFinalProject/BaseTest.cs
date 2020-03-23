@@ -19,19 +19,20 @@ namespace VCSAutomationFinalProject
         public void BaseSetup()
         {
             driver = Driver.InitiateDriver(Driver.Browser.Chrome);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             InitiatePages();
+
+            landingPage
+                .wait.Implicit(10);
+
+            driver.Url = "https://www.aic.lt";
+            landingPage
+                .AcceptCookies();
         }
 
         [TearDown]
         public void BaseTeardown()
         {
             driver.Quit();
-        }
-
-        public void AcceptCookies()
-        {
-            driver.FindElement(By.CssSelector(".cc-allow")).Click();
         }
 
         public void InitiatePages()

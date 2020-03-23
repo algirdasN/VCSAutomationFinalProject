@@ -8,8 +8,8 @@ namespace VCSAutomationFinalProject.Tests
         [SetUp]
         public void Setup()
         {
-            driver.Url = "https://www.aic.lt/Avalyne/Taktiniai-batai";
-            AcceptCookies();
+            tacticalBootsPage
+                .GoToTacticalBootsPage();
         }
 
         [Test]

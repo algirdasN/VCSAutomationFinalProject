@@ -1,30 +1,27 @@
 ﻿using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using SeleniumEasyTests;
 
 namespace VCSAutomationFinalProject
 {
     abstract class BasePage
     {
         protected IWebDriver driver;
+        public Wait wait;
 
         protected BasePage(IWebDriver driver)
         {
             this.driver = driver;
+            wait = new Wait(driver);
         }
 
         public void WaitForRefresh(string url)
         {
-            var counter = 0;
-            while (driver.Url == url && counter < 40)
-            {
-                Thread.Sleep(250);
-                counter++;
-            }
-            if (counter == 40)
-            {
-                Assert.Fail("Website took more than 10 seconds to refresh");
-            }
+            wait.Implicit(0);
+            wait.Explicit(10)
+                .Until(d => driver.Url != url);
+            wait.Implicit(10);
         }
     }
 }

@@ -4,13 +4,6 @@ namespace VCSAutomationFinalProject.Tests
 {
     class Landing : BaseTest
     {
-        [SetUp]
-        public void Setup()
-        {
-            driver.Url = "https://www.aic.lt";
-            AcceptCookies();
-        }
-
         [Test]
         public void FeaturedItemSlideTest()
         {

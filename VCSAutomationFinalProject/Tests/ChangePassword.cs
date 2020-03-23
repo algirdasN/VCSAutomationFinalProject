@@ -8,7 +8,7 @@ namespace VCSAutomationFinalProject.Tests
         [Test]
         public void ChangePasswordTest()
         {
-            var testPassword = "automation3000";
+            const string testPassword = "automation3000";
             ChangePasswordMethod(User.Default.Password, testPassword);
             
             landingPage

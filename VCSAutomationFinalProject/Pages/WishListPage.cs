@@ -15,20 +15,6 @@ namespace VCSAutomationFinalProject.Pages
 
         }
 
-        public void AssertWishList()
-        {
-            var currentUserWishList = BaseTestWithLogin.CurrentUser.SelectedWishListItemIdlList;
-            Assert.AreEqual(currentUserWishList.Count, DisplayedWishListItemList.Count);
-            foreach (var item in DisplayedWishListItemList)
-            {
-                var itemId = item.FindElement(By.CssSelector("[name='anid']")).GetAttribute("value");
-                if (!currentUserWishList.Contains(itemId))
-                {
-                    Assert.Fail("Displayed item was not selected");
-                }
-            }
-        }
-
         public WishListPage GoToWishListPage()
         {
             driver.Url = "https://www.aic.lt/atmintine/";
@@ -45,16 +31,34 @@ namespace VCSAutomationFinalProject.Pages
             return this;
         }
 
+        public void AssertWishList()
+        {
+            var currentUserWishList = BaseTestWithLogin.CurrentUser.SelectedWishListItemIdlList;
+            Assert.AreEqual(currentUserWishList.Count, DisplayedWishListItemList.Count);
+            foreach (var item in DisplayedWishListItemList)
+            {
+                var itemId = item.FindElement(By.CssSelector("[name='anid']")).GetAttribute("value");
+                if (!currentUserWishList.Contains(itemId))
+                {
+                    Assert.Fail("Displayed item was not selected");
+                }
+            }
+        }
+
         public void AssertEmptyWishList()
         {
             try
             {
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.Zero;
+                wait.Implicit(0);
                 Assert.AreEqual(0, DisplayedWishListItemList.Count);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+            }
+            finally
+            {
+                wait.Implicit(10);
             }
         }
     }
