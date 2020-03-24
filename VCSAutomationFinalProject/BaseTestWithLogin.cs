@@ -27,8 +27,7 @@ namespace VCSAutomationFinalProject
                 .wait.Implicit(10);
 
             driver.Url = "https://www.aic.lt";
-            landingPage
-                .AcceptCookies();
+            driver.Manage().Cookies.AddCookie(new Cookie("cookieconsent_status", "allow"));
 
             landingPage
                 .ClickLoginModalButton()

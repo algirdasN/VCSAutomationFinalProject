@@ -16,16 +16,10 @@ namespace VCSAutomationFinalProject.Pages
         private IWebElement UserInfoElement => driver.FindElement(By.XPath("//*[@class='icon-user']/.."));
         private IList<IWebElement> FeaturedSlideList => driver.FindElements(By.CssSelector("#featured a:not(.slick-cloned)"));
         private IList<IWebElement> FeaturedButtonList => driver.FindElements(By.CssSelector(".slick-dots li"));
-        private IWebElement AcceptCookiesButton => driver.FindElement(By.CssSelector(".cc-allow"));
 
         public LandingPage(IWebDriver driver) : base(driver)
         {
 
-        }
-
-        public void AcceptCookies()
-        {
-            AcceptCookiesButton.Click();
         }
 
         public LandingPage ClickLoginModalButton()
