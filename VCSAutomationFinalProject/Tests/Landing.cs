@@ -12,8 +12,8 @@ namespace VCSAutomationFinalProject.Tests
                 .AssertFeaturedSlide(3);
 
             landingPage
-                .ClickFeaturedButton(7)
-                .AssertFeaturedSlide(7);
+                .ClickFeaturedButton(6)
+                .AssertFeaturedSlide(6);
 
             landingPage
                 .ClickFeaturedButton(0)

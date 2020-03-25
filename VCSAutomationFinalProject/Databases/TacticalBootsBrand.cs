@@ -14,7 +14,7 @@
         public string BrandName;
         public int Index;
 
-        public TacticalBootsBrand(string brandName, int index)
+        private TacticalBootsBrand(string brandName, int index)
         {
             BrandName = brandName;
             Index = index;

@@ -11,7 +11,7 @@ namespace VCSAutomationFinalProject.Databases
         public string Password;
         public List<string> SelectedWishListItemIdlList;
 
-        public User(string name, string email, string password)
+        private User(string name, string email, string password)
         {
             Name = name;
             Email = email;
