@@ -8,7 +8,7 @@ namespace VCSAutomationFinalProject.Pages
 {
     class TacticalBootsPage : BasePage
     {
-        private IList<IWebElement> BrandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) li"));
+        private IList<IWebElement> BrandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) li")); 
         private IList<IWebElement> DisplayedItemList => driver.FindElements(By.CssSelector(".productData"));
         private IWebElement SortDropDownElement => driver.FindElement(By.CssSelector(".sort-trigger"));
         private IWebElement SortAlphabeticalZAElement => driver.FindElement(By.CssSelector(".dropdown-content li:nth-child(1)"));
@@ -50,8 +50,12 @@ namespace VCSAutomationFinalProject.Pages
             var actualList = new List<string>();
             foreach (var item in DisplayedItemList)
             {
+                //kad nekartoti element paieskos
+                var title = item.FindElement(By.CssSelector(".titleBox a")).GetAttribute("title");
+                //ir tada i abu listus ideti title
+
                 expectedList.Add(item.FindElement(By.CssSelector(".titleBox a")).GetAttribute("title"));
-                actualList.Add(item.FindElement(By.CssSelector(".titleBox a")).GetAttribute("title"));
+                actualList.Add(item.FindElement(By.CssSelector(".titleBox a")).GetAttribute("title"));  
             }
             expectedList.Sort();
             expectedList.Reverse();
@@ -95,6 +99,7 @@ namespace VCSAutomationFinalProject.Pages
 
         public void AssertSortByPriceDesc()
         {
+            // galima kisti i metoda .FindElement(By.CssSelector("[itemprop='price']")).GetAttribute("content") naudojamas 4 vietose
             var max = Convert.ToDouble(DisplayedItemList[0].FindElement(By.CssSelector("[itemprop='price']")).GetAttribute("content"));
             foreach (var item in DisplayedItemList)
             {

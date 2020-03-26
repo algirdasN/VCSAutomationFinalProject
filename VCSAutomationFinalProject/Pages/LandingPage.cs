@@ -13,7 +13,7 @@ namespace VCSAutomationFinalProject.Pages
         private IWebElement PasswordElement => driver.FindElement(By.Id("loginPwd"));
         private IWebElement LoginButton => driver.FindElement(By.Id("loginButton"));
         private IWebElement LogoutButton => driver.FindElement(By.Id("registerLink"));
-        private IWebElement UserInfoElement => driver.FindElement(By.XPath("//*[@class='icon-user']/.."));
+        private IWebElement UserInfoElement => driver.FindElement(By.XPath("//*[@class='icon-user']/.."));  // CSS selector: [data-reveal-id='loginModal']
         private IList<IWebElement> FeaturedSlideList => driver.FindElements(By.CssSelector("#featured a:not(.slick-cloned)"));
         private IList<IWebElement> FeaturedButtonList => driver.FindElements(By.CssSelector(".slick-dots li"));
 
@@ -72,7 +72,7 @@ namespace VCSAutomationFinalProject.Pages
         public LandingPage ClickFeaturedButton(int index)
         {
             FeaturedButtonList[index].Click();
-            Thread.Sleep(500);
+            Thread.Sleep(500); // kitaip niekaip?
             return this;
         }
 

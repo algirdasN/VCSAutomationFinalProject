@@ -44,11 +44,11 @@ namespace VCSAutomationFinalProject
                 .ClickLogoutButton()
                 .AssertSuccessfulLogout();
 
-            PrintScreen.DoScreenshotOnFailedTests(driver);
+            PrintScreen.DoScreenshotOnFailedTests(driver);  // sitas pats pirmas turi buti :)  
             
             driver.Quit();
         }
-
+        // kadangi dvigubai daug kas vaziuota tam atvejui visai gerai tada dar viena klase tureti kuri viska padarytu :) tik reiktu perduoti driverius
         public void InitiatePages()
         {
             changePasswordPage = new ChangePasswordPage(driver);
