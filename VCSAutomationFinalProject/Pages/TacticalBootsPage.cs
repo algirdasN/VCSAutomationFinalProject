@@ -8,8 +8,11 @@ namespace VCSAutomationFinalProject.Pages
 {
     class TacticalBootsPage : BasePage
     {
-        private IList<IWebElement> BrandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) li")); 
+        private IList<IWebElement> BrandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) input")); 
         private IList<IWebElement> DisplayedItemList => driver.FindElements(By.CssSelector(".productData"));
+        private IList<IWebElement> DisplayedItemTitleList => driver.FindElements(By.CssSelector(".titleBox a"));
+        private IList<IWebElement> DisplayedItemPriceList => driver.FindElements(By.CssSelector("[itemprop='price']"));
+        private IList<IWebElement> DisplayedItemBrandList => driver.FindElements(By.CssSelector("[itemprop='brand']"));
         private IWebElement SortDropDownElement => driver.FindElement(By.CssSelector(".sort-trigger"));
         private IWebElement SortAlphabeticalZAElement => driver.FindElement(By.CssSelector(".dropdown-content li:nth-child(1)"));
         private IWebElement SortAlphabeticalAZElement => driver.FindElement(By.CssSelector(".dropdown-content li:nth-child(2)"));
@@ -48,14 +51,11 @@ namespace VCSAutomationFinalProject.Pages
         {
             var expectedList = new List<string>();
             var actualList = new List<string>();
-            foreach (var item in DisplayedItemList)
+            foreach (var item in DisplayedItemTitleList)
             {
-                //kad nekartoti element paieskos
-                var title = item.FindElement(By.CssSelector(".titleBox a")).GetAttribute("title");
-                //ir tada i abu listus ideti title
-
-                expectedList.Add(item.FindElement(By.CssSelector(".titleBox a")).GetAttribute("title"));
-                actualList.Add(item.FindElement(By.CssSelector(".titleBox a")).GetAttribute("title"));  
+                var title = item.GetAttribute("title");
+                expectedList.Add(title);
+                actualList.Add(title);  
             }
             expectedList.Sort();
             expectedList.Reverse();
@@ -77,10 +77,11 @@ namespace VCSAutomationFinalProject.Pages
         {
             var expectedList = new List<string>();
             var actualList = new List<string>();
-            foreach (var item in DisplayedItemList)
+            foreach (var item in DisplayedItemTitleList)
             {
-                expectedList.Add(item.FindElement(By.CssSelector(".titleBox a")).GetAttribute("title"));
-                actualList.Add(item.FindElement(By.CssSelector(".titleBox a")).GetAttribute("title"));
+                var title = item.GetAttribute("title");
+                expectedList.Add(title);
+                actualList.Add(title);
             }
             expectedList.Sort();
             foreach (var item in expectedList)
@@ -99,11 +100,10 @@ namespace VCSAutomationFinalProject.Pages
 
         public void AssertSortByPriceDesc()
         {
-            // galima kisti i metoda .FindElement(By.CssSelector("[itemprop='price']")).GetAttribute("content") naudojamas 4 vietose
-            var max = Convert.ToDouble(DisplayedItemList[0].FindElement(By.CssSelector("[itemprop='price']")).GetAttribute("content"));
-            foreach (var item in DisplayedItemList)
+            var max = Convert.ToDouble(DisplayedItemPriceList[0].GetAttribute("content"));
+            foreach (var item in DisplayedItemPriceList)
             {
-                var price = Convert.ToDouble(item.FindElement(By.CssSelector("[itemprop='price']")).GetAttribute("content"));
+                var price = Convert.ToDouble(item.GetAttribute("content"));
                 if (price > max)
                 {
                     Assert.Fail("Incorrect sort");
@@ -122,10 +122,10 @@ namespace VCSAutomationFinalProject.Pages
 
         public void AssertSortByPriceAsc()
         {
-            var min = Convert.ToDouble(DisplayedItemList[0].FindElement(By.CssSelector("[itemprop='price']")).GetAttribute("content"));
-            foreach (var item in DisplayedItemList)
+            var min = Convert.ToDouble(DisplayedItemPriceList[0].GetAttribute("content"));
+            foreach (var item in DisplayedItemPriceList)
             {
-                var price = Convert.ToDouble(item.FindElement(By.CssSelector("[itemprop='price']")).GetAttribute("content"));
+                var price = Convert.ToDouble(item.GetAttribute("content"));
                 if (price < min)
                 {
                     Assert.Fail("Incorrect sort");
@@ -137,7 +137,7 @@ namespace VCSAutomationFinalProject.Pages
         public TacticalBootsPage FilterByBrand(TacticalBootsBrand brand)
         {
             var url = driver.Url;
-            BrandFilterList[brand.Index].FindElement(By.CssSelector("input")).Click();
+            BrandFilterList[brand.Index].Click();
             AddRemoveSelectedBrandList(brand);
             WaitForRefresh(url);
             return this;
@@ -146,9 +146,9 @@ namespace VCSAutomationFinalProject.Pages
         public void AssertFilters()
         {
             if (selectedBrands.Count == 0) return;
-            foreach (var item in DisplayedItemList)
+            foreach (var item in DisplayedItemBrandList)
             {
-                var itemBrand = item.FindElement(By.CssSelector("[itemprop='brand']")).GetAttribute("content");
+                var itemBrand = item.GetAttribute("content");
                 if (!selectedBrands.Contains(itemBrand))
                 {
                     Assert.Fail("Displayed item has unselected brand");
@@ -176,7 +176,7 @@ namespace VCSAutomationFinalProject.Pages
                 while (i < BrandFilterList.Count)
                 {
                     var url = driver.Url;
-                    BrandFilterList[i].FindElement(By.CssSelector("input")).Click();
+                    BrandFilterList[i].Click();
                     WaitForRefresh(url);
                     break;
                 }
@@ -191,7 +191,7 @@ namespace VCSAutomationFinalProject.Pages
             {
                 while (i < BrandFilterList.Count)
                 {
-                    Assert.AreEqual(selected, BrandFilterList[i].FindElement(By.CssSelector("input")).Selected);
+                    Assert.AreEqual(selected, BrandFilterList[i].Selected);
                     break;
                 }
             }

@@ -40,15 +40,15 @@ namespace VCSAutomationFinalProject
         [TearDown]
         public void BaseLogout()
         {
+            PrintScreen.DoScreenshotOnFailedTests(driver);
+         
             landingPage
                 .ClickLogoutButton()
                 .AssertSuccessfulLogout();
-
-            PrintScreen.DoScreenshotOnFailedTests(driver);  // sitas pats pirmas turi buti :)  
             
             driver.Quit();
         }
-        // kadangi dvigubai daug kas vaziuota tam atvejui visai gerai tada dar viena klase tureti kuri viska padarytu :) tik reiktu perduoti driverius
+        
         public void InitiatePages()
         {
             changePasswordPage = new ChangePasswordPage(driver);

@@ -11,7 +11,7 @@ namespace VCSAutomationFinalProject.Pages
         {
 
         }
-        // jei useris tures wish liste jis nieko neprides
+
         public ItemInfoPage AddItemToWishList()
         {
             var itemId = driver.FindElement(By.CssSelector("#detailsMain [name='anid']")).GetAttribute("value");
