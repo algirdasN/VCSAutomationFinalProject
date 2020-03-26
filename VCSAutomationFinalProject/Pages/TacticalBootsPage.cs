@@ -9,7 +9,6 @@ namespace VCSAutomationFinalProject.Pages
     class TacticalBootsPage : BasePage
     {
         private IList<IWebElement> BrandFilterList => driver.FindElements(By.CssSelector(".filter-list:nth-child(6) input")); 
-        private IList<IWebElement> DisplayedItemList => driver.FindElements(By.CssSelector(".productData"));
         private IList<IWebElement> DisplayedItemTitleList => driver.FindElements(By.CssSelector(".titleBox a"));
         private IList<IWebElement> DisplayedItemPriceList => driver.FindElements(By.CssSelector("[itemprop='price']"));
         private IList<IWebElement> DisplayedItemBrandList => driver.FindElements(By.CssSelector("[itemprop='brand']"));
